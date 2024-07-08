@@ -353,6 +353,110 @@
 # list.display()
 
 
+# class Node:
+#     def __init__(self,data):
+#         self.data=data
+#         self.next=None
+# class SlinkedL:
+#     def __init__(self):
+#         self.head=None
+#         self.tail=None
+#     def addnode(self,key):
+#         newnode=Node(key)
+#         if self.head is None:
+#             self.head=newnode
+#         else:
+#             self.tail.next=newnode
+#         self.tail=newnode
+#     def insertbeginning(self,key):
+#         newnode=Node(key)
+#         newnode.next=self.head
+#         self.head=newnode
+#     def insertafter(self,nexto,key):
+#         newnode=Node(key)
+#         temp=self.head
+#         if self.head is None:
+#             return
+        
+#         while(temp is not None and temp.data!=nexto):
+#             temp=temp.next
+#         if self.tail==nexto:
+#             self.tail.next=newnode
+#             self.tail=newnode
+#             self.tail.next=None
+#             return
+#         newnode.next=temp.next
+#         temp.next=newnode
+#     def insertend(self,key):
+#         newnode=Node(key)
+#         self.tail.next=newnode
+#         self.tail=newnode
+#         self.tail.next=None
+#     def delete(self,key):
+#         temp=self.head
+#         prev=None
+#         if temp.data==key:
+#             temp=temp.next
+#             return
+#         while(temp is not None and temp.data!=key):
+#             prev=temp
+#             temp=temp.next
+#         if temp is None:
+#             return
+#         if temp==self.tail:
+#             self.tail=prev
+#             self.tail.next=None
+#         prev.next=temp.next
+#     def remove_duplicates(self):
+#         if self.head is None:
+#             return
+#         values=set()
+#         temp=self.head
+#         prev=None
+#         while(temp is not None):
+#             if temp.data in values:
+#                 prev.next=temp.next
+#             else:
+#                 values.add(temp.data)
+#                 prev=temp
+#             temp=temp.next
+#     def remove_even(self):
+#         if self.head is None:
+#             return
+#         values=set()
+#         temp=self.head
+#         prev=None
+#         while(temp is not None):
+#             if temp.data %2==0 :
+#                 if temp is None:
+#                     prev.next=temp.next
+#                 else:
+#                     values.add(temp.data)
+#                     prev=temp
+#             temp=temp.next
+
+            
+#     def display(self):
+#         if self.head is None:
+#             print("list is empty")
+#         temp=self.head
+#         while(temp is not None):
+#             print(temp.data)
+#             temp=temp.next
+# list=SlinkedL()
+# arr=[1,2,3,4,5,4,5]
+# for i in arr:
+#     list.addnode(i)
+# list.insertbeginning(6)
+# list.insertafter(3,7)
+# list.insertend(10)
+# list.delete(2)
+# list.remove_duplicates()
+# list.remove_even()
+# list.display()
+
+
+
 class Node:
     def __init__(self,data):
         self.data=data
@@ -372,91 +476,114 @@ class SlinkedL:
         newnode=Node(key)
         newnode.next=self.head
         self.head=newnode
-    def insertafter(self,nexto,key):
+    def insertafter(self,nextto,key):
         newnode=Node(key)
         temp=self.head
-        if self.head is None:
-            return
-        
-        while(temp is not None and temp.data!=nexto):
+        while(temp is not None and temp.data!=nextto):
             temp=temp.next
-        if self.tail==nexto:
+        if self.tail==nextto:
             self.tail.next=newnode
             self.tail=newnode
             self.tail.next=None
-            return
         newnode.next=temp.next
         temp.next=newnode
-    def insertend(self,key):
-        newnode=Node(key)
-        self.tail.next=newnode
-        self.tail=newnode
-        self.tail.next=None
     def delete(self,key):
         temp=self.head
         prev=None
         if temp.data==key:
-            temp=temp.next
+            self.head=temp.next
             return
         while(temp is not None and temp.data!=key):
             prev=temp
             temp=temp.next
-        if temp is None:
+        if self.head is None:
             return
         if temp==self.tail:
             self.tail=prev
             self.tail.next=None
-        prev.next=temp.next
-    def remove_duplicates(self):
-        if self.head is None:
             return
+        prev.next=temp.next
+    def remove_dup(self):
+         values=set()
+         temp=self.head
+         prev=None
+         while(temp is not None):
+             if temp.data in values:
+                 prev.next=temp.next
+             else:
+                 values.add(temp.data)
+                 prev=temp
+             temp=temp.next
+    def remove_even(self):
+        while self.head is not None and self.head.data % 2 == 0:
+             self.head = self.head.next
         values=set()
         temp=self.head
         prev=None
+    
         while(temp is not None):
-            if temp.data in values:
-                prev.next=temp.next
+            if temp.data%2==0:
+               prev.next=temp.next
             else:
                 values.add(temp.data)
                 prev=temp
             temp=temp.next
-    def remove_even(self):
+    def remove_middle(self):
         if self.head is None:
+            self.head=None
             return
-        values=set()
-        temp=self.head
+        slow=self.head
+        fast=self.head
         prev=None
-        while(temp is not None):
-            if temp.data %2==0 :
-                if temp is None:
-                    prev.next=temp.next
-                else:
-                    values.add(temp.data)
-                    prev=temp
-            temp=temp.next
-
+        while(fast is not None and fast.next is not None):
+            fast=fast.next.next
+            prev=slow
+            slow=slow.next
             
+        if prev is not None:
+            prev.next=slow.next
+
     def display(self):
         if self.head is None:
-            print("list is empty")
+            print("empty list")
         temp=self.head
         while(temp is not None):
             print(temp.data)
             temp=temp.next
+    def reverse(self):
+        temp=self.head
+        prev=None
+        while(temp is not None):
+            next=temp.next
+            temp.next=prev
+            prev=temp
+            temp=next
+        self.head=prev
+
 list=SlinkedL()
-arr=[1,2,3,4,5,4,5]
+arr=[1,2,3,4,5,4,3,2,7,9]   
 for i in arr:
-    list.addnode(i)
-list.insertbeginning(6)
-list.insertafter(3,7)
-list.insertend(10)
-list.delete(2)
-list.remove_duplicates()
-list.remove_even()
+    list.addnode(i) 
 list.display()
 
-
-
-        
-
-        
+print("insert beggining")  
+list.insertbeginning(3)  
+list.display()
+print("insert after")
+list.insertafter(3,10) 
+list.display()
+print("delete after")
+list.delete(3)
+list.display()
+print("delete dup")
+list.remove_dup()
+list.display()
+print("delete even")
+list.remove_even()
+list.display()
+print("delete middle")
+list.remove_middle()
+list.display()
+print("reverse")
+list.reverse()
+list.display()
