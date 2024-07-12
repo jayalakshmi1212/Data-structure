@@ -129,3 +129,19 @@ def sum(arr):
         return 0
     return arr[0]+sum(arr[1:])
 print(sum([1,2,3,4,5]))
+
+def binary_search_recur(arr,target,left,right):
+    if left>right:
+        return -1
+    mid=(left+right)//2
+    if arr[mid]==target:
+        return mid
+    elif arr[mid]<target:
+        return binary_search_recur(arr,target,mid+1,right)
+    else:
+        return binary_search_recur(arr,target,left,mid-1)
+def binary_search(arr,target):
+    return binary_search_recur(arr,target,0,len(arr)-1)
+arr=[1,2,3,4,5]
+target=3
+print(binary_search(arr,target))
