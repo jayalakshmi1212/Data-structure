@@ -561,7 +561,7 @@ class SlinkedL:
         self.head=prev
 
 list=SlinkedL()
-arr=[1,2,3,4,5,4,3,2,7,9]   
+arr=[1,2,3,4,5,4,3,2,7,9,7]   
 for i in arr:
     list.addnode(i) 
 list.display()
