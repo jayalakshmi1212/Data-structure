@@ -83,85 +83,105 @@
 # reversed_arr=reverse_array(arr)
 # print(reversed_arr)
 
-def largest(arr):
-    largest=arr[0]
-    for i in range(len(arr)):
-        if arr[i]>largest:
-            largest=arr[i]
-    return largest
-print(largest([1,2,3,4,6,5,7]))
+# def largest(arr):
+#     largest=arr[0]
+#     for i in range(len(arr)):
+#         if arr[i]>largest:
+#             largest=arr[i]
+#     return largest
+# print(largest([1,2,3,4,6,5,7]))
 
-def smallest(arr):
-    smallest=arr[0]
-    for i in range(len(arr)):
-        if arr[i]<arr[0]:
-            smallest=arr[i]
-    return smallest
-print(smallest([5,6,2,1,0,9]))
-
-
-def neg_elem_by_0(arr):
-    for i in range(len(arr)):
-        if arr[i]<0:
-           arr[i]=0
-    return arr
-print(neg_elem_by_0([1,2,-3,4,-5]))
+# def smallest(arr):
+#     smallest=arr[0]
+#     for i in range(len(arr)):
+#         if arr[i]<arr[0]:
+#             smallest=arr[i]
+#     return smallest
+# print(smallest([5,6,2,1,0,9]))
 
 
-def avg_of_elem(arr):
-    n=0
-    v=0
-    for i in arr:
-        n+=i
-        v+=1
-    return n//v
-print(avg_of_elem([1,2,3,4,5]))
+# def neg_elem_by_0(arr):
+#     for i in range(len(arr)):
+#         if arr[i]<0:
+#            arr[i]=0
+#     return arr
+# print(neg_elem_by_0([1,2,-3,4,-5]))
 
 
-def avg_of_even_elem(arr):
-    n=0
-    v=0
-    for i in arr:
-        if i%2==0:
-            n+=i
-            v=+1
-    return n//v
-print(avg_of_elem([1,2,3,4,5]))
+# def avg_of_elem(arr):
+#     n=0
+#     v=0
+#     for i in arr:
+#         n+=i
+#         v+=1
+#     return n//v
+# print(avg_of_elem([1,2,3,4,5]))
 
 
-def avg_of_odd_elem(arr):
-    n=0
-    v=0
-    for i in arr:
-        if i%2!=0:
-            n+=i
-            v=+1
-    return n//v
-print(avg_of_elem([1,2,3,4,5]))
+# def avg_of_even_elem(arr):
+#     n=0
+#     v=0
+#     for i in arr:
+#         if i%2==0:
+#             n+=i
+#             v=+1
+#     return n//v
+# print(avg_of_elem([1,2,3,4,5]))
+
+
+# def avg_of_odd_elem(arr):
+#     n=0
+#     v=0
+#     for i in arr:
+#         if i%2!=0:
+#             n+=i
+#             v=+1
+#     return n//v
+# print(avg_of_elem([1,2,3,4,5]))
 
 
             
-def second_largest(arr):
-     largest=arr[0]
-     second_largest=0
-     for i in range(len((arr))):
-         if arr[i]>largest:
-             second_largest=largest
-             largest=arr[i]
-         elif arr[i]>second_largest and arr[i]!=largest:
-             second_largest=arr[i]
-     return second_largest
-print(second_largest([1,4,5,6,2]))
+# def second_largest(arr):
+#      largest=arr[0]
+#      second_largest=0
+#      for i in range(len((arr))):
+#          if arr[i]>largest:
+#              second_largest=largest
+#              largest=arr[i]
+#          elif arr[i]>second_largest and arr[i]!=largest:
+#              second_largest=arr[i]
+#      return second_largest
+# print(second_largest([1,4,5,6,2]))
 
-def second_smallest(arr):
-    smallest=arr[0]
-    second_smallest=
-    for i in range(len(arr)):
-        if arr[i]<smallest:
-            second_smallest=smallest
-            smallest=arr[i]
-        elif arr[i]<second_smallest and arr[i]!=smallest:
-            second_smallest=arr[i]
-    return second_smallest
-print(second_smallest([1,4,5,6,2]))
+# def second_smallest(arr):
+#     smallest=arr[0]
+#     second_smallest=
+#     for i in range(len(arr)):
+#         if arr[i]<smallest:
+#             second_smallest=smallest
+#             smallest=arr[i]
+#         elif arr[i]<second_smallest and arr[i]!=smallest:
+#             second_smallest=arr[i]
+#     return second_smallest
+# print(second_smallest([1,4,5,6,2]))
 
+def find_uncommon(arr1,arr2):
+    uncommon_elem=[]
+    for i in arr1:
+        if i not in arr2:
+            uncommon_elem.append(i)
+    for i in arr2:
+        if i not in arr1:
+            uncommon_elem.append(i)
+    return uncommon_elem
+arr1=[1,2,3,4,5]
+arr2=[4,5,6,7,8]
+print(find_uncommon(arr1,arr2))
+       
+
+def sorted_or_not(arr):
+    for i in range(len(arr)-1):
+       if arr[i]>arr[i+1]:
+        return False
+    return True
+print(sorted_or_not([1,2,5,9]))

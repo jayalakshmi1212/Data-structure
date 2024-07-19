@@ -178,7 +178,7 @@ class SlinkedL:
             print("empty")
         self.front=self.front.next
         if self.rear is None:
-            self.rear is None
+            self.rear=None
     def display(self):
         if self.front is None:
             print("empty")
@@ -194,3 +194,42 @@ list.display()
 print("dequeee")
 list.dequeque()
 list.display()
+
+def quick_sort(arr):
+    if len(arr)<=1:
+        return arr
+    else:
+        pivot_elem=arr[0]
+        less_than=[x for x in arr[1:] if x<=pivot_elem]
+        great_than=[x for x in arr[1:] if x>pivot_elem]
+        return quick_sort(less_than)+[pivot_elem]+quick_sort(great_than)
+print(quick_sort([1,5,4,2,3]))
+
+
+def merge_sort(arr):
+    if len(arr)>1:
+        mid=len(arr)//2
+        left=arr[:mid]
+        right=arr[mid:]
+        merge_sort(left)
+        merge_sort(right)
+        i=j=k=0
+        while(i<len(left)and j<len(right)):
+            if left[i]<right[j]:
+                arr[k]=left[i]
+                i+=1
+            else:
+                arr[k]=right[j]
+                j+=1
+            k+=1
+        while(i<len(left)):
+            arr[k]=left[i]
+            i+=1
+            k+=1
+        while(j<len(right)):
+            arr[k]=right[j]
+            j+=1
+            k+=1
+        return arr
+print(merge_sort([10,8,9,6,7]))
+    

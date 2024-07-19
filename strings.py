@@ -78,3 +78,14 @@ def sentence_length(str1):
          count+=1
     return count
 print(sentence_length("i want to learn astronomy"))
+
+def largest_word(string):
+    string1=string.split()
+    largest_word=0
+    large=" "
+    for i in string1:
+       if len(i) > largest_word:
+           largest_word=len(i)
+           large=i
+    return large
+print(largest_word("movee on jayaa move on"))
