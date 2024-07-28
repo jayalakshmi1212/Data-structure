@@ -36,3 +36,5 @@ def selection_sort(arr):
         i+=1
     return arr
 print(selection_sort([4,2,5,1,3]))
+
+   

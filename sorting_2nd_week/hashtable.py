@@ -10,6 +10,12 @@ class Hashtable:
         self.table[index]=key
     def get(self,key):
         return key%self.size
+    def remove(self,key):
+        index=self.hash_func(key)
+        if self.table[index]==key:
+            self.table[index]=None
+            return True
+        return False
     def display(self):
         print("Key-Value Pairs:")
         for index,item in enumerate(self.table):
@@ -22,6 +28,8 @@ table.add(34)
 table.add(43)
 table.add(41)
 table.add(45)
+table.display()
+table.remove(13)
 table.display()
 print("get")
 print(table.get(34))
@@ -42,6 +50,14 @@ class Hash_table:
                 self.table[new_index]=key
                 return
         print("hash table is full")
+    def remove(self,key):
+        index=self.hash_func(key)
+        for i in range(self.size):
+            new_index=(index+i)%self.size
+            if self.table[new_index]==key:
+                self.table[new_index]=None
+                return True
+        return False
     def display(self):
         for k,v in enumerate(self.table):
             print(f"{k}:{v}")
@@ -76,6 +92,20 @@ class Hashtable:
             while(temp.next is not None):
                 temp=temp.next
             temp.next=new_node
+    def remove(self,key):
+        index=self.hash_func(key)
+        current=self.table[index]
+        prev=None
+        while(current is not None):
+            if current.key==key:
+                if prev is None:
+                    self.table[index]=current.next
+                else:
+                    prev.next=current.next
+                return True
+            prev=current
+            current=current.next
+        return False
     def display(self):
         for i, node in enumerate(self.table):
             print(f"Index {i}:", end=" ")
@@ -92,5 +122,7 @@ table.add(11,"chichi chellumbol")
 table.add(12,"nigel")
 table.add(16,"varenam")
 table.add(19,"chichi dora")
+table.display()
+table.remove(10)
 table.display()
         
